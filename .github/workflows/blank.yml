@@ -34,11 +34,6 @@ jobs:
         shell: bash
         run: |
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-      # Install JQ
-      - name: Install JQ
-        shell: bash
-        run: |
           brew install jq
 
       # Runs a set of commands using the runners shell
