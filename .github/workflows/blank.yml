@@ -47,7 +47,7 @@ jobs:
       - name: Validate json
         shell: bash
         run: |
-        if jq -e . >/dev/null 2>&1 <<< test.json ; then
+        if jq -e . >/dev/null 2>&1 <<< test.json; then
           echo "parsed successfully"
         else
           echo "could not parse json string"
