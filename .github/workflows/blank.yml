@@ -33,7 +33,7 @@ jobs:
       - name: Install Homebrew
         shell: bash
         run: |
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >> $GITHUB_PATH
           brew install jq
 
       # Runs a set of commands using the runners shell
