@@ -36,12 +36,6 @@ jobs:
         shell: bash
         run: |
           jq --sort-keys . test.json > sorted_file
-      # cat sorted file
-      - name: Cat Sorted File
-        shell: bash
-        run: |
-          cat sorted_file
-          cat test.json
 
       # validate json
       - name: Validate json
@@ -51,10 +45,17 @@ jobs:
           VALIDATE_RESULT=$(eval "$VALIDATE_COMMAND")
 
           if VALIDATE_RESULT=='"object"'; then
-            echo "Valida json"
+            echo "{JSON_IS_VALID}={true}" >> $GITHUB_ENV
           else
-            echo "Invalit Json"
+            echo "{JSON_IS_VALID}={false}" >> $GITHUB_ENV
           fi
+
+      # warning
+      - name: Warning json
+        if: ${{ env.JSON_IS_VALID == 'false' }}
+        shell: bash
+        run: |
+          echo "コラッ"
           
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
